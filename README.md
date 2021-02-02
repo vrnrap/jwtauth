@@ -1,4 +1,4 @@
-# Awesome Project Build with TypeORM
+# JWT Auth Example
 
 Steps to run this project:
 
