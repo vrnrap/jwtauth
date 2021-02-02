@@ -5,8 +5,9 @@ import { verify } from "jsonwebtoken";
 import "reflect-metadata";
 import { buildSchema } from "type-graphql";
 import { createConnection } from "typeorm";
-import { createAccessToken } from "./auth";
+import { createAccessToken, createRefreshToken } from "./auth";
 import { User } from "./entity/User";
+import { sendRefreshToken } from "./sendRefreshToken";
 import { UserResolver } from "./UserResolver";
 
 (async () => {
@@ -34,6 +35,8 @@ import { UserResolver } from "./UserResolver";
     if (!user) {
       return res.send({ verified: false, accessToken: "" });
     }
+
+    sendRefreshToken(res, createRefreshToken(user));
 
     return res.send({ verified: true, accessToken: createAccessToken(user) });
   });
