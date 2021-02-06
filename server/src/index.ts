@@ -1,5 +1,6 @@
 import { ApolloServer } from "apollo-server-express";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import express from "express";
 import { verify } from "jsonwebtoken";
 import "reflect-metadata";
@@ -12,6 +13,12 @@ import { UserResolver } from "./UserResolver";
 
 (async () => {
   const app = express();
+  app.use(
+    cors({
+      origin: "http://localhost:300",
+      credentials: true,
+    })
+  );
   app.use(cookieParser());
   app.get("/", (_, res) => res.send("express response working."));
 
@@ -54,7 +61,7 @@ import { UserResolver } from "./UserResolver";
     context: ({ req, res }) => ({ req, res }),
   });
 
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({ app, cors: false });
 
   app.listen(4000, () => {
     console.log("express server started.");

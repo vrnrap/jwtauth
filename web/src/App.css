@@ -1,0 +1,20 @@
+body {
+  background-color: #172b3a;
+  color: white;
+  justify-content: center;
+  text-align: center;
+}
+
+header {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+header div {
+  margin: 1em;
+}
+
+a {
+  color: white;
+}
