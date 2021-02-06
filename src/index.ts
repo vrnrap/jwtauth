@@ -36,6 +36,10 @@ import { UserResolver } from "./UserResolver";
       return res.send({ verified: false, accessToken: "" });
     }
 
+    if (user.tokenVersion !== payload.tokenVersion) {
+      return res.send({ verified: false, accessToken: "" });
+    }
+
     sendRefreshToken(res, createRefreshToken(user));
 
     return res.send({ verified: true, accessToken: createAccessToken(user) });
