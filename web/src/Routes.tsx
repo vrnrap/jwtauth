@@ -10,6 +10,9 @@ export const Routes: React.FC = () => {
       <div>
         <header>
           <div>
+            <Link to="/">home</Link>
+          </div>
+          <div>
             <Link to="/register">register</Link>
           </div>
           <div>
@@ -18,8 +21,8 @@ export const Routes: React.FC = () => {
         </header>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/" component={Register} />
-          <Route exact path="/" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </div>
     </BrowserRouter>
