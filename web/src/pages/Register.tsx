@@ -11,7 +11,6 @@ export const Register: React.FC<RouteComponentProps> = ({ history }) => {
     <form
       onSubmit={async (e) => {
         e.preventDefault();
-        console.log("form submited");
         console.log(email, password);
         const response = await register({
           variables: {
